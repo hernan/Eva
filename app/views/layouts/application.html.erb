@@ -23,6 +23,17 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav>
+        <ul>
+          <li><%= link_to "Products", products_path %></li>
+          <li><%= link_to "Attributes", evatributes_path %></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer></footer>
   </body>
 </html>

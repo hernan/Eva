@@ -1,0 +1,27 @@
+<h1>Attribute</h1>
+<% if @attribute.errors.any? %>
+  <ul>
+    <% @attribute.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with(model: @attribute, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :entity_type %>
+    <%= form.select :entity_type, Evatribute::ENTITIES %>
+  </div>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div class="field">
+    <%= form.label :data_type %>
+    <%= form.select :data_type, Evatribute::DATA_TYPES %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+    <%= link_to 'Cancel', evatributes_path %>
+  </div>
+<% end %>

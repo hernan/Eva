@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_09_022029) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_09_030848) do
+  create_table "evatributes", force: :cascade do |t|
+    t.string "entity_type", null: false
+    t.string "name", null: false
+    t.string "column_name", null: false
+    t.string "data_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["entity_type"], name: "index_evatributes_on_entity_type"
+  end
+
+  create_table "evdata", force: :cascade do |t|
+    t.bigint "entity_id", null: false
+    t.string "entity_type", null: false
+    t.json "data", default: "{}", null: false
+    t.index ["entity_id", "entity_type"], name: "index_evdata_on_entity_id_and_entity_type"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.string "sku"
