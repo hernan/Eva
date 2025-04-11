@@ -1,11 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[ show edit update destroy ]
-
   def index
     @products = Product.all
-  end
-
-  def show
   end
 
   def new
@@ -14,6 +9,8 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.find(params[:id])
+    render :form
   end
 
   def create
@@ -27,6 +24,7 @@ class ProductsController < ApplicationController
   end
 
   def update
+    @product = Product.find(params[:id])
     if @product.update(product_params)
       redirect_to products_path, notice: "Product was successfully updated."
     else
@@ -35,16 +33,11 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product.destroy!
+    Product.find(params[:id]).destroy!
     redirect_to products_path, notice: "Product was successfully removed."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @product = Product.find(params.expect(:id))
-    end
-
     # Only allow a list of trusted parameters through.
     def product_params
       params.expect(product: [ :name, :sku, :active, :in_stock ])
