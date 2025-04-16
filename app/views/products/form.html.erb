@@ -1,3 +1,4 @@
+<h1>Product</h1>
 <%= form_with(model: @product) do |form| %>
   <% if @product.errors.any? %>
     <div style="color: red">
@@ -33,5 +34,6 @@
 
   <div class="form-actions">
     <%= form.submit %>
+    <%= link_to 'Cancel', products_path %>
   </div>
 <% end %>

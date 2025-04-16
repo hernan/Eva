@@ -8,3 +8,16 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+.form-actions {
+  display: flex;
+  width: 300px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.form-actions input[type="submit"] {
+  width: auto;
+  margin-bottom: 0;
+}
