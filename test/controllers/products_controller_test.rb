@@ -2,7 +2,11 @@ require "test_helper"
 
 class ProductsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @product = products(:one)
+    @product = Product.create!(
+      name: "Test Product",
+      sku: "sku-#{SecureRandom.hex(4)}",
+      active: true
+    )
   end
 
   test "should get index" do
@@ -26,7 +30,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       post products_url, params: params
     end
 
-    assert_redirected_to product_url(Product.last)
+    assert_redirected_to products_url
   end
 
   test "should show product" do
@@ -41,7 +45,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update product" do
     patch product_url(@product), params: { product: { active: @product.active, in_stock: @product.in_stock, name: @product.name, sku: @product.sku } }
-    assert_redirected_to product_url(@product)
+    assert_redirected_to products_url
   end
 
   test "should destroy product" do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_09_030848) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_24_014153) do
   create_table "evatributes", force: :cascade do |t|
     t.string "entity_type", null: false
     t.string "name", null: false
@@ -18,6 +18,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_09_030848) do
     t.string "data_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "default", default: ""
+    t.string "options", default: ""
+    t.boolean "required", default: false
+    t.boolean "multiple", default: false
     t.index ["entity_type"], name: "index_evatributes_on_entity_type"
   end
 

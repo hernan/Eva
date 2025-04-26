@@ -7,6 +7,7 @@ class Evatribute < ApplicationRecord
   validates :name, presence: true, uniqueness: { scope: :entity_type }
   validates :column_name, presence: true, uniqueness: { scope: :entity_type }
   validates :data_type, presence: true, inclusion: { in: DATA_TYPES }
+  validates :entity_type, presence: true, inclusion: { in: ENTITIES }
 
   before_validation :set_column_name
 

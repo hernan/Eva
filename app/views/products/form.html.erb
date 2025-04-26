@@ -32,6 +32,15 @@
     <%= form.number_field :in_stock %>
   </div>
 
+  <h3>Product Details</h3>
+  <%= form.fields_for :evdata do |f| %>
+    <% @product.evatributes.each do |attr| %>
+      <div>
+        <%= f.label attr.name %>
+        <%= f.text_field attr.column_name %>
+      </div>
+    <% end %>
+  <% end %>
   <div class="form-actions">
     <%= form.submit %>
     <%= link_to 'Cancel', products_path %>
