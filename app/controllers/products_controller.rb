@@ -42,11 +42,9 @@ class ProductsController < ApplicationController
   end
 
   private
-    # Only allow a list of trusted parameters through.
     def product_params
       params.expect(
-        product: [ :name, :sku, :active, :in_stock ],
-        evdata: [ :evdata, :value ]
+        product: [ :name, :sku, :active, :in_stock, evdata: {} ]
       )
     end
 end

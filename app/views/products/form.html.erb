@@ -37,10 +37,11 @@
     <% @product.evatributes.each do |attr| %>
       <div>
         <%= f.label attr.name %>
-        <%= f.text_field attr.column_name %>
+        <%= f.text_field attr.column_name, value: attr.value %>
       </div>
     <% end %>
   <% end %>
+
   <div class="form-actions">
     <%= form.submit %>
     <%= link_to 'Cancel', products_path %>
