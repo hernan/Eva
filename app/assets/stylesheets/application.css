@@ -9,6 +9,10 @@
  * Consider organizing styles into separate files for maintainability.
  */
 
+.error-messages p {
+  color: rgb(196, 20, 20);
+}
+
 .form-actions {
   display: flex;
   width: 300px;

@@ -1,44 +1,16 @@
 <h1>Product</h1>
-<%= form_with(model: @product) do |form| %>
-  <% if @product.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+<%= lform_with(model: @product) do |form| %>
+  <%= show_errors_for(@product) %>
 
-      <ul>
-        <% @product.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :sku %>
-    <%= form.text_field :sku %>
-  </div>
-
-  <div>
-    <%= form.label :active %>
-    <%= form.checkbox :active %>
-  </div>
-
-  <div>
-    <%= form.label :in_stock %>
-    <%= form.number_field :in_stock %>
-  </div>
+  <%= form.text_field :name, label: 'Name' %>
+  <%= form.text_field :sku, label: 'SKU' %>
+  <%= form.checkbox :active, label: 'Active' %>
+  <%= form.number_field :in_stock, label: 'In Stock' %>
 
   <h3>Product Details</h3>
   <%= form.fields_for :evdata do |f| %>
     <% @product.evatributes.each do |attr| %>
-      <div>
-        <%= f.label attr.name %>
-        <%= f.text_field attr.column_name, value: attr.value %>
-      </div>
+      <%= f.text_field attr.column_name, label: attr.name, value: attr.value %>
     <% end %>
   <% end %>
 
