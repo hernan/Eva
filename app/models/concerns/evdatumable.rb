@@ -28,6 +28,10 @@ module Evdatumable
         )
       end
     end
+
+    def evattrs
+      evatributes.map { |ev| [ ev.column_name.to_sym, ev.type ] }.to_h
+    end
   end
 
   # class_methods do
